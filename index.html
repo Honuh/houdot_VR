@@ -29,18 +29,22 @@
 
 		<a-scene background="color: skyblue">
 			<a-assets>
-				<a-asset-item id="glbModel" src="./models/femme.glb"></a-asset-item>
+				<a-asset-item id="glbModel" src="./models/homme2.glb"></a-asset-item>
 			</a-assets>
-			<a-entity environment="preset: forest; dressingAmount: 50"></a-entity>
+			<a-entity light="type: ambient; color: #CCC; intensity: 0.5"></a-entity>
+			<a-entity light="type: directional;castShadow:true; color: #EEE; intensity: 0.5" position="-1 1 1"></a-entity>
+			<a-entity environment="preset: yavapai; dressingAmount: 50" shadow="receive: true"></a-entity>
 			<a-entity   id ="modele"
-						scale="0.02 0.02 0.02"
-						position="0 1.9 -5"
-						rotation="90 90 180"
+						scale="1 1 1"
+						position="0 0 -3"
+						rotation="90 90 0"
 						loaded
 						animation-mixer
-						gltf-model="#glbModel">
+						gltf-model="#glbModel"
+						shadow="cast:true"
+						shadow="receive: true">
 			</a-entity>
-			<a-entity id="camera" position="0 1.7 0" camera look-controls></a-entity>
+			<a-entity id="camera" position="0 1.6 0" camera look-controls></a-entity>
     	</a-scene>
 
   </body>
