@@ -23,6 +23,24 @@
 	            }
 	      	});
 	    </script>
+
+			#Component materiau transparent
+			<script>
+	AFRAME.registerComponent('shadow-material', {
+		init: function(){
+			console.log('shadow-material');
+			let el = this.el;
+			let self = this;
+			let mesh = el.getObject3D('mesh');
+			console.log(mesh);
+			if (!mesh){return;}
+			mesh.material = new THREE.ShadowMaterial();
+			mesh.material.opacity = 1.0;
+				}
+			});
+		</script>
+
+
   </head>
 
   <body style='margin : 0px; overflow: hidden;'>
@@ -30,20 +48,29 @@
 		<a-scene background="color: skyblue">
 			<a-assets>
 				<a-asset-item id="glbModel" src="./models/homme2.glb"></a-asset-item>
+
 			</a-assets>
+
+
+			#lumières et evironnement
 			<a-entity light="type: ambient; color: #CCC; intensity: 0.5"></a-entity>
-			<a-entity light="type: directional;castShadow:true; color: #EEE; intensity: 0.5" position="-1 1 1"></a-entity>
-			<a-entity environment="preset: yavapai; dressingAmount: 50" shadow="receive: true"></a-entity>
+			<a-entity light="type: directional; castShadow:true; color: red; intensity: 0.5" position="-1 2 1"></a-entity>
+			<a-entity environment="preset: yavapai; dressingAmount: 200" shadow="receive: true"></a-entity>
+			#a-plane color="#CCC" height="20" width="20" position="0 2 -5" shadow="receive: true" shadow-material>/a-plane>
+
+			#personnage (utiliser "pas 01" "pas 02" ou "pas 03")
 			<a-entity   id ="modele"
 						scale="1 1 1"
 						position="0 0 -3"
 						rotation="90 90 0"
 						loaded
-						animation-mixer
+						animation-mixer="clip: pas 02"
 						gltf-model="#glbModel"
 						shadow="cast:true"
 						shadow="receive: true">
 			</a-entity>
+
+			#camera
 			<a-entity id="camera" position="0 1.6 0" camera look-controls></a-entity>
     	</a-scene>
 
