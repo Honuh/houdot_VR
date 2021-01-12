@@ -1,0 +1,12 @@
+# ignore files
+.DS_Store
+Thumbs.db
+~*.*
+
+# ignore files
+/z-index_AR_geo_EM.html
+/z-index_AR_geo_JLB.html
+
+# ignore rep
+/z_*
+/assets/z_*
