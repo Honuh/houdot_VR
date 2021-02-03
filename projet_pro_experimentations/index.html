@@ -9,6 +9,7 @@
   <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
   <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
   <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+  <script src="https://wizgrav.github.io/aframe-effects/dist/aframe-effects.js"></script>
 
 
 
@@ -58,7 +59,7 @@
 <body style='margin : 0px; overflow: hidden;'>
 
   <!-- SCENE AFRAME -->
-  <a-scene background="color: skyblue" renderer="antialias: true;
+  <a-scene  background="color: black" renderer="antialias: true;
                            colorManagement: true;
                            foveationLevel : 3;
                            highRefreshRate: true;
@@ -80,9 +81,11 @@
     <!-- <a-entity light="type: ambient; color: #fffcf0; intensity: 5"></a-entity> -->
     <a-entity light="type: directional; castShadow:true; intensity: 4 " position="-6.112 17.857 -8.113"></a-entity>
     <a-entity light="type: directional; castShadow:true; intensity: 4 " position="7.169 17.857 -0.405"></a-entity>
+    <a-entity light="type: point; castShadow:true; intensity: 4 " position="0 2 0"></a-entity>
+
 
     <!-- ENVIRONNEMENTS (ici photo 360)-->
-    <a-gltf-model unlit src="./assets/models/vertices4.glb" > </a-gltf-model>
+    <a-gltf-model unlit src="./assets/models/metro.glb" position="0 0.5 0" rotation="0 90 0" shadow="cast:true; receive:true"> </a-gltf-model>
     <!-- <a-entity id ="monde"
               gltf-model="#glbmonde"
               color="#CCCCCC"
