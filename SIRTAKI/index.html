@@ -118,7 +118,7 @@
         }
 
         </script>
-        <style>
+        <!-- <style>
 			#musique {
 				position: absolute; left: 10px; bottom: 10px; width: 800px; height: 30px;
 				display: flex; flex-direction: row; align-items: center; justify-content: flex-start;
@@ -126,7 +126,7 @@
 			}
 			#bouton { height: 30px;}
 			p { font-size : 0.8em; font-family: Arial, Helvetica, sans-serif; margin-left: 20px; }
-		</style>
+		</style> -->
 
     </head>
 
@@ -184,14 +184,14 @@
             <a-entity  id ="come" gltf-model="#glbCome"
                        position="1 0 -2.5" rotation="90 180 90"
                        model_loaded shadow="cast:true; receive:true"
-                       animation-mixer="clip: idle; clampWhenFinished: true; repetitions: 1; duration: 2; "
+                       animation-mixer="clip: ready; clampWhenFinished: true; repetitions: 1; duration: 2; "
                        delay_ready="audio: zorba; delai: 5000;"
 					   >
             </a-entity>
             <a-entity  id ="alizee" gltf-model="#glbAlizee"
                        position="2 0 -2.5" rotation="90 180 90"
                        model_loaded shadow="cast:true; receive:true"
-                       animation-mixer="clip: idle; clampWhenFinished: true; repetitions: 1; duration: 2; "
+                       animation-mixer="clip: ready; clampWhenFinished: true; repetitions: 1; duration: 2; "
                        delay_ready="audio: zorba; delai: 5000;"
 					   >
             </a-entity>
@@ -199,7 +199,7 @@
             <a-entity  id ="leo" gltf-model="#glbLeo"
                        position="-2 0 -2.5" rotation="90 180 90"
                        model_loaded shadow="cast:true; receive:true"
-                       animation-mixer="clip: idle; clampWhenFinished: true; repetitions: 1; duration: 2; "
+                       animation-mixer="clip: ready; clampWhenFinished: true; repetitions: 1; duration: 2; "
                        delay_ready="audio: zorba; delai: 5000;"
                        >
             </a-entity>
@@ -216,7 +216,7 @@
             <a-entity  id ="cecile" gltf-model="#glbCecile"
                        position="-1 0 1.5" rotation="90 -90 90"
                        model_loaded shadow="cast:true; receive:true"
-                       animation-mixer="clip: idle; clampWhenFinished: true; repetitions: 1; duration: 2; "
+                       animation-mixer="clip: ready; clampWhenFinished: true; repetitions: 1; duration: 2; "
                        delay_ready="audio: zorba; delai: 5000;"
 
                        >
@@ -235,6 +235,16 @@
                        delay_ready="audio: zorba; delai: 5000;"
                        >
             </a-entity>
+            
+            <!-- ANNONCE -->
+            <a-text id="texte" value="teach me to dance" align="center" color="#FFF"
+                    visible="true" position="1 0.75 -2"
+                    geometry="primitive: plane; width: 2; height: 0.5" material="color: blue"
+                    event-set__curseur="_event: mouseenter; _target: #curseur; visible: false"
+                    event-set__texte="_event: mouseenter; _target: #texte; visible: false"
+                    init_sound="audio: zorba"
+                    >
+            </a-text>
 
 
             <!-- ENVIRONNEMENTS (ici photo 360)-->
@@ -252,8 +262,9 @@
                      >
             </a-plane>
 
-
-            <a-camera></a-camera>
+            <a-camera>
+                <a-cursor id="curseur"></a-cursor>
+            </a-camera>
 
         </a-scene>
 
@@ -266,53 +277,37 @@
 		</div>
 
         <script>
-            var b = document.querySelector('#bouton');
-            var son = document.querySelector('#zorba');
-
-            var AudioContext = window.AudioContext || window.webkitAudioContext;
-            var contexteAudio = new AudioContext;
-            unlockAudioIOS(contexteAudio); // ok pour context = AudioContext;
-
-            function resumeAudio() {
-                console.log(contexteAudio.state);
-
-                if(contexteAudio.state == "suspended")
-                {
-                      contexteAudio.resume();
-                      console.log('Playback resumed successfully');
-                      son.play();
-                      b.innerHTML = "SON OFF";
-                      console.log("SON OFF");
-                }
-                else {
-                      contexteAudio.suspend();
-                      console.log('Playback paused successfully');
-                      son.pause();
-                      b.innerHTML = "SON ON";
-                      console.log("SON ON");
-                }
-                //document.removeEventListener("click", resumeAudio);
-            }
+        // DEMARRAGE AUDIO (mouseenter) : 1 parametre audio = id de l'audio
+        AFRAME.registerComponent('init_sound', {
+          schema: {
+              audio: {type: 'string', default: ''}
+          },
+          init: function () {
+                var audio = this.data.audio;
+                var el = this.el;
+                el.addEventListener('mouseenter', function () {
+                    var son = document.getElementById(audio);
+                    var AudioContext = window.AudioContext || window.webkitAudioContext;
+                    var contexteAudio = new AudioContext;
+                    unlockAudioIOS(contexteAudio); // ok pour context = AudioContext;
+                    console.log(">>>> audio state : "+contexteAudio.state);
+                    if(contexteAudio.state == "suspended")
+                    {
+                          contexteAudio.resume();
+                          son.play();
+                          console.log(">>>> SON ON : Playback resumed successfully");
+                    }
+                    else {
+                          contexteAudio.suspend();
+                          son.pause();
+                          console.log(">>>> SON OFF : Playback paused successfully");
+                    }
+                });
+          }
+        });
+            
             b.onclick = resumeAudio;
-            // infos audio
-            var info = document.querySelector('#info');
-            var current = document.querySelector('#current');
-
-            son.ontimeupdate = function() {tps_ecoule()};
-            function tps_ecoule() {
-              var courant = son.currentTime.toFixed(2);
-              current.innerHTML = "temps écoulé : "+courant+"s";
-              info.innerHTML = "durée totale : "+son.duration.toFixed(2)+"s";
-              periode = getPeriode(courant);
-            }
-
-            function getPeriode(ref) {
-                var periode = 0;
-                for (i = 1 ; i < danse.length ; i++) {
-                      if(ref >= danse[i].debut) periode++;
-                }
-                return periode;
-            }
+           
 
           </script>
 
