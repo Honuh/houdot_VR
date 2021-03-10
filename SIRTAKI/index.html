@@ -277,34 +277,7 @@
 		</div>
 
         <script>
-        // DEMARRAGE AUDIO (mouseenter) : 1 parametre audio = id de l'audio
-        AFRAME.registerComponent('init_sound', {
-          schema: {
-              audio: {type: 'string', default: ''}
-          },
-          init: function () {
-                var audio = this.data.audio;
-                var el = this.el;
-                el.addEventListener('mouseenter', function () {
-                    var son = document.getElementById(audio);
-                    var AudioContext = window.AudioContext || window.webkitAudioContext;
-                    var contexteAudio = new AudioContext;
-                    unlockAudioIOS(contexteAudio); // ok pour context = AudioContext;
-                    console.log(">>>> audio state : "+contexteAudio.state);
-                    if(contexteAudio.state == "suspended")
-                    {
-                          contexteAudio.resume();
-                          son.play();
-                          console.log(">>>> SON ON : Playback resumed successfully");
-                    }
-                    else {
-                          contexteAudio.suspend();
-                          son.pause();
-                          console.log(">>>> SON OFF : Playback paused successfully");
-                    }
-                });
-          }
-        });
+
         
         
         var b = document.querySelector('#bouton');
@@ -356,7 +329,34 @@
                 return periode;
             }
 
-
+        // DEMARRAGE AUDIO (mouseenter) : 1 parametre audio = id de l'audio
+        AFRAME.registerComponent('init_sound', {
+          schema: {
+              audio: {type: 'string', default: ''}
+          },
+          init: function () {
+                var audio = this.data.audio;
+                var el = this.el;
+                el.addEventListener('mouseenter', function () {
+                    var son = document.getElementById(audio);
+                    var AudioContext = window.AudioContext || window.webkitAudioContext;
+                    var contexteAudio = new AudioContext;
+                    unlockAudioIOS(contexteAudio); // ok pour context = AudioContext;
+                    console.log(">>>> audio state : "+contexteAudio.state);
+                    if(contexteAudio.state == "suspended")
+                    {
+                          contexteAudio.resume();
+                          son.play();
+                          console.log(">>>> SON ON : Playback resumed successfully");
+                    }
+                    else {
+                          contexteAudio.suspend();
+                          son.pause();
+                          console.log(">>>> SON OFF : Playback paused successfully");
+                    }
+                });
+          }
+        });
           </script>
 
     </body>
