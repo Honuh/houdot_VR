@@ -39,13 +39,13 @@
       });
 
       function addVertex(pos) {
-          let scene = document.getElementById("scene");
+          let objet = document.getElementById("objet");
           var entite = document.createElement('a-entity');
           entite.setAttribute('mixin', 'vertex');
           entite.setAttribute('position', pos);
           entite.setAttribute('class', 'sphere');
           // entite.setAttribute('render-order', 'points')
-          scene.appendChild(entite);
+          objet.appendChild(entite);
           //instance.play();
       }
       </script>
@@ -75,7 +75,7 @@
            </a-plane>
            <a-plane position="0 -2 0" rotation="-90 0 0" width="20" height="20" color="#CCCCCC">
            </a-plane> -->
-           <a-entity addvertices render-order="points"></a-entity>
+           <a-entity id="objet" addvertices render-order="points"></a-entity>
            <a-entity
            obj-model="obj: #vaisseau-obj;"
            material="color: blue; transparent: true; opacity: 1;"
