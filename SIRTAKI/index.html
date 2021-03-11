@@ -149,8 +149,8 @@
     			<a-asset-item id="glbLeo" src="./assets/models/leo_alizee.glb"></a-asset-item>
     			<a-asset-item id="glbLoic" src="./assets/models/loic_marion.glb"></a-asset-item>
     			<a-asset-item id="glbMartin" src="./assets/models/martin_tom.glb"></a-asset-item>
-          <a-asset-item id="glbMarion" src="./assets/models/marion_loic.glb"></a-asset-item>
-
+                <a-asset-item id="glbMarion" src="./assets/models/marion_loic.glb"></a-asset-item>
+                <a-asset-item id="monde1" src="./assets/models/monde1.glb"></a-asset-item>
 
                 <!-- <a-asset-item id="glbHugo" src="./assets/models/hugo_antoine.glb"></a-asset-item> -->
 				<!-- <a-asset-item id="glbAdrien" src="./assets/models/adrien_come.glb"></a-asset-item>				<a-asset-item id="glbJasmine" src="./assets/models/jasmine_louane.glb"></a-asset-item> -->
@@ -249,6 +249,10 @@
 
             <!-- ENVIRONNEMENTS (ici photo 360)-->
 			<a-sky src="#img360" position="-2.06 10 -20" rotation="0 95 0"></a-sky>
+            <a-entity  id ="int" gltf-model="#monde1"
+            position="-0.920 4.05 1.460" rotation="0 -70 0" scale="0.5 0.5 0.5"
+            model_loaded>
+            </a-entity>
             <a-plane position="-2.06 10 -20" rotation="0 95 0"
                      width="30" height="10" color="#CCCCCC"
                      shadow="receive: true"
@@ -277,36 +281,7 @@
 		</div>
 
         <script>
-        // DEMARRAGE AUDIO (mouseenter) : 1 parametre audio = id de l'audio
-        AFRAME.registerComponent('init_sound', {
-          schema: {
-              audio: {type: 'string', default: ''}
-          },
-          init: function () {
-                var audio = this.data.audio;
-                var el = this.el;
-                el.addEventListener('mouseenter', function () {
-                    var son = document.getElementById(audio);
-                    var AudioContext = window.AudioContext || window.webkitAudioContext;
-                    var contexteAudio = new AudioContext;
-                    unlockAudioIOS(contexteAudio); // ok pour context = AudioContext;
-                    console.log(">>>> audio state : "+contexteAudio.state);
-                    if(contexteAudio.state == "suspended")
-                    {
-                          contexteAudio.resume();
-                          son.play();
-                          console.log(">>>> SON ON : Playback resumed successfully");
-                    }
-                    else {
-                          contexteAudio.suspend();
-                          son.pause();
-                          console.log(">>>> SON OFF : Playback paused successfully");
-                    }
-                });
-          }
-        });
-        
-        
+       
         var b = document.querySelector('#bouton');
             var son = document.querySelector('#zorba');
 
@@ -355,7 +330,36 @@
                 }
                 return periode;
             }
-
+            
+            
+        // DEMARRAGE AUDIO (mouseenter) : 1 parametre audio = id de l'audio
+        AFRAME.registerComponent('init_sound', {
+          schema: {
+              audio: {type: 'string', default: ''}
+          },
+          init: function () {
+                var audio = this.data.audio;
+                var el = this.el;
+                el.addEventListener('mouseenter', function () {
+                    var son = document.getElementById(audio);
+                    var AudioContext = window.AudioContext || window.webkitAudioContext;
+                    var contexteAudio = new AudioContext;
+                    unlockAudioIOS(contexteAudio); // ok pour context = AudioContext;
+                    console.log(">>>> audio state : "+contexteAudio.state);
+                    if(contexteAudio.state == "suspended")
+                    {
+                          contexteAudio.resume();
+                          son.play();
+                          console.log(">>>> SON ON : Playback resumed successfully");
+                    }
+                    else {
+                          contexteAudio.suspend();
+                          son.pause();
+                          console.log(">>>> SON OFF : Playback paused successfully");
+                    }
+                });
+          }
+        });
 
           </script>
 
