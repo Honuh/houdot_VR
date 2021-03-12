@@ -1,6 +1,6 @@
 # projet pro Hugo Oudot - Dnmade 3 numérique
 
-# expéimentations :
+# expérimentations :
 
 - [HDRI nuage de points](https://honuh.github.io/houdot_VR/projet_pro_experimentations/hdri.html)
 - [metro statique](https://honuh.github.io/houdot_VR/projet_pro_experimentations/metrostatic.html)
