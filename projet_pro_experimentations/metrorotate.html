@@ -25,6 +25,44 @@
   //             });
   //     }
   // });
+  AFRAME.registerComponent('pivot', {
+  dependencies: ['position'],
+
+  schema: {type: 'vec3'},
+
+  init: function () {
+    var data = this.data;
+    var el = this.el;
+    var originalParent = el.object3D.parent;
+    var originalGroup = el.object3D;
+    var outerGroup = new THREE.Group();
+
+    originalPosition.copy(originalGroup.position);
+    originalRotation.copy(originalGroup.rotation);
+
+    // Detach current group from parent.
+    originalParent.remove(originalGroup);
+    outerGroup.add(originalGroup);
+
+    // Set new group as the outer group.
+    originalParent.add(outerGroup);
+
+    // Set outer group as new object3D.
+    el.object3D = outerGroup;
+
+    // Apply pivot to original group.
+    originalGroup.position.set(-1 * data.x, -1 * data.y, -1 * data.z);
+
+    // Offset the pivot so that world position not affected.
+    // And restore position onto outer group.
+    outerGroup.position.set(data.x + originalPosition.x, data.y + originalPosition.y,
+                            data.z + originalPosition.z);
+
+    // Transfer rotation to outer group.
+    outerGroup.rotation.copy(originalGroup.rotation);
+    originalGroup.rotation.set(0, 0, 0);
+  }
+});
 
   AFRAME.registerComponent('unlit', {
     init: function () {
@@ -85,7 +123,7 @@
 
 
     <!-- ENVIRONNEMENTS (ici photo 360)-->
-    <a-gltf-model unlit src="./assets/models/metro2.glb" position="0 0.5 0" rotation="0 90 0" animation="property: rotation; from: 0 90 0; to: 0 450 0; dur: 2000; easing: linear; loop: true"> </a-gltf-model>
+    <a-gltf-model unlit src="./assets/models/metro2.glb" pivot="0 1.1 0"position="0 0.5 0" rotation="0 90 0" animation="property: rotation; from: 0 90 0; to: 0 90 -360; dur: 2000; easing: linear; loop: true"> </a-gltf-model>
     <!-- <a-entity id ="monde"
               gltf-model="#glbmonde"
               color="#CCCCCC"

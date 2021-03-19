@@ -58,13 +58,13 @@
            <a-assets>
                 <a-mixin id="vertex"
                          geometry="primitive: sphere; radius: 0.01;"
-                         material="shader: flat; color: white; transparent: true; opacity : 1"
+                         material="shader: flat; color: white; transparent: true; opacity : 0"
                          animation__position="property: material.opacity;
                             dur: 1000;
-                            delay: 5000;
+                            
                             easing: easeOutQuad;
-                            to: 0;
-                            loop: false; dir: reverse"
+                            to: 1;
+                            loop: false;"
                 >
                 </a-mixin>
                 <a-asset-item id="metro3" src="./metro3.obj"></a-asset-item>
@@ -87,7 +87,7 @@
            render-order= "obj;"
            animation__opacity="property: material.opacity;
               dur: 1000;
-              delay: 5000;
+              
               easing: easeOutQuad;
               to: 0.0;
               loop: false;"
