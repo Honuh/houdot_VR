@@ -1,0 +1,97 @@
+<!-- http://k3d.ivank.net/?p=documentation -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <title>Voilà ce que je peux faire !</title>
+  <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+  <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+  <script src="https://wizgrav.github.io/aframe-effects/dist/aframe-effects.js"></script>
+  <script type="text/javascript" src="../lib/k3d.js"></script>
+  <script src="https://unpkg.com/aframe-render-order-component@1.1.0/dist/aframe-render-order-component.min.js"></script>
+
+
+  <script type="text/javascript">
+
+    function Start() {
+      K3D.load("./metro3.obj", loaded); // loading file ...
+    }
+
+    function loaded(data) {
+      var m = K3D.parse.fromOBJ(data); // done !
+
+      var coord = ""
+      for (var i = 0; i < m.c_verts.length; i += 3) {
+        coord = m.c_verts[i] + " " + m.c_verts[i + 1] + " " + m.c_verts[i + 2];
+            addVertex(coord);
+      }
+    }
+
+      AFRAME.registerComponent('addvertices', {
+               init: function (t) {
+                   Start();
+               }
+      });
+
+      function addVertex(pos) {
+          let objet = document.getElementById("objet");
+          var entite = document.createElement('a-entity');
+          entite.setAttribute('mixin', 'vertex');
+          entite.setAttribute('position', pos);
+          entite.setAttribute('class', 'sphere');
+          // entite.setAttribute('render-order', 'points')
+          objet.appendChild(entite);
+          //instance.play();
+      }
+      </script>
+   </head>
+
+   <body>
+       <a-scene id="scene" background="color: black" render-order="objpoints" >
+
+           <a-camera position="0 1 0" look-controls wasd-controls></a-camera>
+
+           <a-assets>
+                <a-mixin id="vertex"
+                         geometry="primitive: sphere; radius: 0.01;"
+                         material="shader: flat; color: white; transparent: true; opacity : 1"
+                         animation__position="property: material.opacity;
+                            dur: 1000;
+                            easing: easeOutQuad;
+                            to: 0;
+                            loop: false; dir: reverse"
+                >
+                </a-mixin>
+                <a-asset-item id="metro" src="./metro3.glb"></a-asset-item>
+                
+
+           </a-assets>
+
+           <!-- <a-plane position="0 -2 0" rotation="-90 0 0" width="20" height="20" color="#CCCCCC" shadow="receive: true"
+               shadow-material="opacite: 0.5">
+           </a-plane>
+           <a-plane position="0 -2 0" rotation="-90 0 0" width="20" height="20" color="#CCCCCC">
+           </a-plane> -->
+           <a-entity id="objet" rotation="0 -90 0" addvertices render-order="points"></a-entity>
+           <a-entity
+           gltf-model="#metro"
+           position="0 0 0;"
+           rotation="0 -90 0"
+           material="color: blue; transparent: true; opacity: 0,5;"
+           render-order= "obj;"
+           animation__opacity="property: material.opacity;
+              dur: 1000;
+              easing: easeOutQuad;
+              to: 0.0;
+              loop: false;"
+
+
+           ></a-entity>
+
+       </a-scene>
+
+     </body>
