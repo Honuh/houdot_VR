@@ -66,7 +66,7 @@
                             loop: false; dir: reverse"
                 >
                 </a-mixin>
-                <a-asset-item id="metro" src="./metro3.glb"></a-asset-item>
+                <a-asset-item id="metro" src="./metro3.obj"></a-asset-item>
                 
 
            </a-assets>
@@ -77,8 +77,8 @@
            <a-plane position="0 -2 0" rotation="-90 0 0" width="20" height="20" color="#CCCCCC">
            </a-plane> -->
            <a-entity id="objet" rotation="0 -90 0" scale="2 2 2" addvertices render-order="points"></a-entity>
-           <!-- <a-entity
-           gltf-model="#metro"
+           <a-entity
+           obj-model="#metro"
            position="0 0 0;"
            rotation="0 -90 0"
            scale="2 2 2"
@@ -90,8 +90,8 @@
               to: 0.0;
               loop: false;"
 
-
-           ></a-entity> -->
+              
+           ></a-entity>
 
        </a-scene>
 
