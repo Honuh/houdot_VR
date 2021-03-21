@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <title>Fog</title>
+  <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+  <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+  <script src="https://wizgrav.github.io/aframe-effects/dist/aframe-effects.js"></script>
+
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+
+  <!-- SCENE AFRAME -->
+  <a-scene background="color: #FFFFFF" renderer="antialias: true;
+                           colorManagement: true;
+                           foveationLevel : 3;
+                           highRefreshRate: true;
+                           physicallyCorrectLights: true;"
+                           fog="type: linear; color: #FFFFFF; far: 10; near: 0"
+                           animation="property: fog.far; dur: 10000; from :10; to:3;easing: easeOutQuad; "
+                           animation__2="property: fog.color; dur: 10000; from : #FFFFFF; to:#7ac6f9;easing: easeOutQuad; "
+                           animation__3="property: background.color; dur: 10000; from : #FFFFFF; to:#7ac6f9;easing: easeOutQuad; ">
+    <a-gltf-model src="../assets/models/terrainvague.glb" position="0 0 0" rotation="0 90 0" scale="0.5 0.5 0.5"> </a-gltf-model>
+    <a-box position="0 1 -5"></a-box>
+    <a-box position="5 1 -15"></a-box>
+
+
+    <a-camera position="0 1.8 0"
+    rotation = "0 0 0"></a-camera>
+
+  </a-scene>
+
+  </script>
+
+</body>
+
+</html>
+
+<!-- <a-sky color="#EFF2DD" animation="property: components.material.material.color; type: color; dur: 10000; dir: alternate; from: #afafaf; to: #352D4D" material="" geometry="" scale=""></a-sky> -->
