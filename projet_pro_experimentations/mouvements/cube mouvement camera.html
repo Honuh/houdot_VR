@@ -25,10 +25,9 @@
     },
 
     tick: function (time, timeDelta) {
-      this.el.object3D.position.x = this.cam.object3D.position.x*2;
-      this.el.object3D.position.z = this.cam.object3D.position.z*1.3+-5z;
+      this.el.object3D.position.x = this.cam.object3D.position.z*0.1;
+      this.el.object3D.position.z = this.cam.object3D.position.x*0.1+-5;
       this.el.object3D.rotation.x+=0.01;
-      console.log(this.el.object3D.position.x);
     }
 });
 
@@ -51,6 +50,7 @@
             physicallyCorrectLights: true;">
 
     <a-box position="0 1 -5" mouvements></a-box>
+    <a-gltf-model src="../assets/models/terrainvague.glb" position="0 0 0" rotation="0 90 0" scale="0.5 0.5 0.5"> </a-gltf-model>
 
 
     <a-camera position="0 1.6 0"
