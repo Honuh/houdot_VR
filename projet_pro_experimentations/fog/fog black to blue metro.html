@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <title>Fog</title>
+  <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+  <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+  <script src="https://wizgrav.github.io/aframe-effects/dist/aframe-effects.js"></script>
+
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+
+  <!-- SCENE AFRAME -->
+  <a-scene background="color: #000000" renderer="antialias: true;
+                           colorManagement: true;
+                           foveationLevel : 3;
+                           highRefreshRate: true;
+                           physicallyCorrectLights: true;"
+                           fog="type: linear; color: #000000; far: 10; near: 0"
+                           animation="property: fog.far; dur: 10000; from :7; to:1.5 ;easing: easeOutQuad; "
+                           animation__2="property: fog.color; delay: 2000; dur: 20000; from : #000000; to:#7ac6f9;easing: easeOutQuad; "
+                           animation__3="property: background.color; delay: 2000; dur: 20000; from : #000000; to:#7ac6f9;easing: easeOutQuad; ">
+    <a-gltf-model unlit src="../assets/models/metro2.glb" position="0 0.5 0" rotation="0 90 0" animation="property: rotation; from: -0.2 90 0; to: 0.2 90 0; dir: alternate; dur: 100; easing: linear; loop: true"> </a-gltf-model>
+    <a-box 
+    position="0 1 -5"
+    material="fog:false; color: red"
+    ></a-box>
+
+
+    <a-camera position="0 1.6 0"
+    rotation = "0 0 0"></a-camera>
+
+  </a-scene>
+
+  </script>
+
+</body>
+
+</html>
+
+<!-- <a-sky color="#EFF2DD" animation="property: components.material.material.color; type: color; dur: 10000; dir: alternate; from: #afafaf; to: #352D4D" material="" geometry="" scale=""></a-sky> -->
