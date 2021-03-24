@@ -25,11 +25,17 @@
     },
 
     tick: function (time, timeDelta) {
-      this.el.object3D.position.x = this.cam.object3D.position.z*0.1;
-      this.el.object3D.position.z = this.cam.object3D.position.x*0.1+-5;
+      this.el.object3D.position.x = this.cam.object3D.position.z*0.5;
+      this.el.object3D.position.z = this.cam.object3D.position.x*0.5+-5;
       this.el.object3D.rotation.x+=0.01;
     }
 });
+
+function test()
+{
+  
+
+}
 
 
 
