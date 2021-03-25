@@ -8,4 +8,9 @@
 - [animation opacité points](https://honuh.github.io/houdot_VR/projet_pro_experimentations/z_k3Dlib/3_vaisseau_anim.html)
 - [brouillard](https://honuh.github.io/houdot_VR/projet_pro_experimentations/fog/fog.html)
 - [metro vers nuage de points](https://honuh.github.io/houdot_VR/projet_pro_experimentations/z_k3Dlib/metro_point.html)
+- [fog](https://honuh.github.io/houdot_VR/projet_pro_experimentations/fog/fog.html)
+- [fog white](https://honuh.github.io/houdot_VR/projet_pro_experimentations/fog/fog_white_to_blue.html)
+- [fog black](https://honuh.github.io/houdot_VR/projet_pro_experimentations/fog/fog_black_to_blue_metro.html)
+- [mouvement](https://honuh.github.io/houdot_VR/projet_pro_experimentations/mouvements/cube_mouvement_camera.html)
+
 
