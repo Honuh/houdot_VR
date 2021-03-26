@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <title>Mouvements</title>
+  <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+  <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+  <script src="https://wizgrav.github.io/aframe-effects/dist/aframe-effects.js"></script>
+  <script src="../lib/Random.js"></script>
+
+
+
+
+    <script>
+    function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+    } 
+
+    AFRAME.registerComponent('mouvements', {
+      schema: {
+      value: {type: 'int', default: 1}
+      },
+      
+    init: function () {
+      this.valueX = getRandomArbitrary(1.5, 5.5);
+      this.valueZ = getRandomArbitrary(1.5, 5.5);
+      var el = this.el;
+      var sceneEl = document.querySelector('a-scene');
+      this.cam = sceneEl.querySelector('a-camera');
+      this.x = el.object3D.position.x;
+      this.z = el.object3D.position.z;
+    },
+
+    tick: function (time, timeDelta) {
+      this.el.object3D.position.x = this.cam.object3D.position.z*this.valueX + this.x;
+      this.el.object3D.position.z = this.cam.object3D.position.x*this.valueZ + this.z;
+      this.el.object3D.rotation.x+=0.01;
+      console.log(this.el.object3D.position.x);
+    }
+});
+
+// AFRAME.registerComponent('randomvalue', {
+
+//     init: function () {
+//       var el = this.el;
+//       var randomvalue = getRandomArbitrary(1.5, 20.5);
+//       el.setAttribute('mouvements', {value: randomvalue})
+      
+//     },
+// });
+
+AFRAME.registerComponent('randompos', {
+
+init: function () {
+  var el = this.el;
+  var randomposx = getRandomArbitrary(-10, 10);
+  var randomposy = getRandomArbitrary(1, 3);
+  var randomposz = getRandomArbitrary(-10, 10);
+  el.setAttribute('position', {x: randomposx, y: randomposy, z: randomposz})
+},
+});
+
+</script>
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+
+  <!-- SCENE AFRAME -->
+  <a-scene 
+  background="color: #FFFFFF" 
+  renderer="antialias: true;
+            colorManagement: true;
+            foveationLevel : 3;
+            highRefreshRate: true;
+            physicallyCorrectLights: true;">
+
+
+
+    <a-box randompos mouvements randomvalue></a-box>
+    <a-box randompos mouvements randomvalue></a-box>
+    <a-box randompos mouvements randomvalue></a-box>
+    <a-box randompos mouvements randomvalue></a-box>
+    <a-box randompos mouvements randomvalue></a-box>
+    <a-box randompos mouvements randomvalue></a-box>
+    <a-box randompos mouvements randomvalue></a-box>
+
+
+
+
+
+
+
+
+
+    <a-gltf-model src="../assets/models/terrainvague.glb" position="0 0 0" rotation="0 90 0" scale="0.5 0.5 0.5"> </a-gltf-model>
+
+
+    <a-camera position="0 1.6 0"
+    rotation = "0 0 0"></a-camera>
+
+  </a-scene>
+
+  </script>
+
+</body>
+
+</html>
+
+<!-- <a-sky color="#EFF2DD" animation="property: components.material.material.color; type: color; dur: 10000; dir: alternate; from: #afafaf; to: #352D4D" material="" geometry="" scale=""></a-sky> -->
