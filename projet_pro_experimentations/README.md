@@ -12,6 +12,6 @@
 - [fog white](https://honuh.github.io/houdot_VR/projet_pro_experimentations/fog/fog_white_to_blue.html)
 - [fog black](https://honuh.github.io/houdot_VR/projet_pro_experimentations/fog/fog_black_to_blue_metro.html)
 - [mouvement](https://honuh.github.io/houdot_VR/projet_pro_experimentations/mouvements/cube_mouvement_camera.html)
-- [mouvement multiple](https://honuh.github.io/houdot_VR/projet_pro_experimentations/mouvements/cube2_mouvement_multiple.html)
+- [mouvement multiple](https://honuh.github.io/houdot_VR/projet_pro_experimentations/mouvements/cube_mouvement_multiple.html)
 
 
