@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   <title>Mouvements</title>
   <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
-  <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
   <script src="https://wizgrav.github.io/aframe-effects/dist/aframe-effects.js"></script>
   <script src="../lib/Random.js"></script>
@@ -39,7 +39,6 @@
       this.el.object3D.position.x = this.cam.object3D.position.z*this.valueX + this.x;
       this.el.object3D.position.z = this.cam.object3D.position.x*this.valueZ + this.z;
       this.el.object3D.rotation.x+=0.01;
-      console.log(this.el.object3D.position.x);
     }
 });
 
@@ -80,13 +79,41 @@ init: function () {
 
 
 
-    <a-box randompos mouvements randomvalue></a-box>
-    <a-box randompos mouvements randomvalue></a-box>
-    <a-box randompos mouvements randomvalue></a-box>
-    <a-box randompos mouvements randomvalue></a-box>
-    <a-box randompos mouvements randomvalue></a-box>
-    <a-box randompos mouvements randomvalue></a-box>
-    <a-box randompos mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+    <a-box randompos scale="0.2 0.2 0.2"mouvements randomvalue></a-box>
+
+ 
 
 
 
@@ -96,7 +123,8 @@ init: function () {
 
 
 
-    <a-gltf-model src="../assets/models/terrainvague.glb" position="0 0 0" rotation="0 90 0" scale="0.5 0.5 0.5"> </a-gltf-model>
+    <a-grid></a-grid>
+    <!-- <a-gltf-model src="../assets/models/terrainvague.glb" position="0 0 0" rotation="0 90 0" scale="0.5 0.5 0.5"> </a-gltf-model> -->
 
 
     <a-camera position="0 1.8 0"
