@@ -82,7 +82,9 @@
    <body>
        <a-scene id="scene" background="color: black" render-order="objpoints" >
 
-           <a-camera position="0 0.5 0" look-controls wasd-controls></a-camera>
+        <a-camera position ="0 1.8 0">
+          <a-cursor color ="white" position ="0 0 -1"></a-cursor>
+      </a-camera>
 
            <a-assets>
                 <a-mixin id="vertex"
@@ -108,8 +110,8 @@
            </a-plane>
            <a-plane position="0 -2 0" rotation="-90 0 0" width="20" height="20" color="#CCCCCC">
            </a-plane> -->
-           <a-entity hand-controls="left"></a-entity>
-          <a-entity hand-controls="right"></a-entity>
+           <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
+           <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
            <a-entity id="objet" rotation="0 -90 0" scale="2 2 2" addvertices render-order="points"></a-entity>
            <a-entity
            obj-model="obj:#metro3;"
