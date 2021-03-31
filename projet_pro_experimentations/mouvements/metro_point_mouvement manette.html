@@ -82,6 +82,13 @@
 
    <body>
        <a-scene id="scene" background="color: black" render-order="objpoints" >
+        <a-entity>
+          <a-camera position ="0 1.8 0">
+          <a-cursor color ="white" position ="0 0 -1"></a-cursor>
+          </a-camera>
+          <a-entity sphere-collider="objects: a-box" super-hands hand-controls="hand: left"></a-entity>
+          <a-entity sphere-collider="objects: a-box" super-hands hand-controls="hand: right"></a-entity>
+        </a-entity>
                <a-assets>
                 <a-mixin id="vertex"
                   hoverable grabbable stretchable draggable
@@ -108,13 +115,7 @@
            <a-plane position="0 -2 0" rotation="-90 0 0" width="20" height="20" color="#CCCCCC">
            </a-plane> -->
 
-
-          <a-camera position ="0 1.8 0">
-          <a-cursor color ="white" position ="0 0 -1"></a-cursor>
-          </a-camera>
-          <a-entity sphere-collider="objects: a-box" super-hands hand-controls="hand: left"></a-entity>
-          <a-entity sphere-collider="objects: a-box" super-hands hand-controls="hand: right"></a-entity>
-
+        
 
            <a-entity id="objet" rotation="0 -90 0" scale="2 2 2" addvertices render-order="points"></a-entity>
            <a-entity
