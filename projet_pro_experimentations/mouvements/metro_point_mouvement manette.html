@@ -82,12 +82,24 @@
 
    <body>
        <a-scene id="scene" background="color: black" render-order="objpoints" >
+        <a-mixin id="touch"
+        physics-collider phase-shift
+        collision-filter="collisionForces: false"
+        static-body="shape: sphere; sphereRadius: 0.02"
+        super-hands="colliderEvent: collisions;
+                     colliderEventProperty: els;
+                     colliderEndEvent: collisions;
+                     colliderEndEventProperty: clearedEls;">
         <a-entity>
           <a-camera position ="0 1.8 0">
           <a-cursor color ="white" position ="0 0 -1"></a-cursor>
           </a-camera>
-          <a-entity sphere-collider="objects: a-box" super-hands hand-controls="hand: left"></a-entity>
-          <a-entity sphere-collider="objects: a-box" super-hands hand-controls="hand: right"></a-entity>
+          <a-entity id="rhand" mixin="touch"
+                  hand-controls="hand: right">
+          </a-entity>
+          <a-entity id="lhand" mixin="touch"
+                  hand-controls="hand: left">
+          </a-entity>
         </a-entity>
         <a-box hoverable grabbable stretchable draggable dropppable color="blue" position="0 0 -1"></a-box>
                <a-assets>
