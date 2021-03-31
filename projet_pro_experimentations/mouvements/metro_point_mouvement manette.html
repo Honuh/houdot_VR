@@ -84,15 +84,16 @@
        <a-scene id="scene" background="color: black" render-order="objpoints" >
                <a-assets>
                 <a-mixin id="vertex"
-                         geometry="primitive: sphere; radius: 0.01;"
-                         material="shader: flat; color: white; transparent: true; opacity : 0"
-                         animation__position="property: material.opacity;
-                            dur: 1000;
+                  hoverable grabbable stretchable draggable
+                  geometry="primitive: sphere; radius: 0.01;"
+                  material="shader: flat; color: white; transparent: true; opacity : 0"
+                  animation__position="property: material.opacity;
+                    dur: 1000;
                             
-                            easing: easeOutQuad;
-                            to: 1;
-                            loop: false;"
-                          mouvements
+                    easing: easeOutQuad;
+                    to: 1;
+                    loop: false;"
+                  mouvements
 
                 >
                 </a-mixin>
@@ -107,7 +108,7 @@
            <a-plane position="0 -2 0" rotation="-90 0 0" width="20" height="20" color="#CCCCCC">
            </a-plane> -->
 
-           
+
           <a-camera position ="0 1.8 0">
           <a-cursor color ="white" position ="0 0 -1"></a-cursor>
           </a-camera>
