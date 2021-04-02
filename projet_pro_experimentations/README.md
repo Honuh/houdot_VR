@@ -17,3 +17,4 @@
 - [manette_metro](https://honuh.github.io/houdot_VR/projet_pro_experimentations/mouvements/metro_point_mouvement manette.html)
 - [manettes](https://honuh.github.io/houdot_VR/projet_pro_experimentations/manettes/basic_controller.html)
 - [manettes 2](https://honuh.github.io/houdot_VR/projet_pro_experimentations/manettes/basic_controller_2.html)
+- [manettes metro](https://honuh.github.io/houdot_VR/projet_pro_experimentations/mouvements/metro_point_mouvement_hand.html)
