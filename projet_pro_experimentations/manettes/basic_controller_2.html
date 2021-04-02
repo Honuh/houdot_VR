@@ -84,7 +84,7 @@
                colliderEndEvent: collisions;
                colliderEndEventProperty: clearedEls;">
     </a-mixin>
-
+    <a-box hoverable grabbable stretchable draggable dropppable color="red" position="0 0 -1"></a-box>
     <a-mixin id="vertex"
       hoverable grabbable stretchable draggable dropppable
       geometry="primitive: sphere; radius: 0.01;"
@@ -114,7 +114,7 @@
       <a-entity sphere-collider="objects: a-box" super-hands hand-controls="hand: right"></a-entity>
     </a-entity>
     <!-- hover & drag-drop won't have any obvious effect without some additional event handlers or components. See the examples page for more -->
-    <a-box hoverable grabbable stretchable draggable dropppable color="red" position="0 0 -1"></a-box>
+    
 
      <a-entity id="objet" rotation="0 -90 0" scale="2 2 2" addvertices render-order="points"></a-entity>
      <a-entity
