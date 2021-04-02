@@ -1,0 +1,76 @@
+<head>
+  <title>Most Basic Super-Hands Example</title>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
+  <script src="https://rawgit.com/wmurphyrd/aframe-super-hands-component/master/dist/super-hands.js"></script>
+</head>
+
+<body>
+
+
+<a-scene id="scene" background="color: black" render-order="objpoints" >
+    
+
+  <a-assets>
+    <a-mixin id="touch"
+    physics-collider phase-shift
+    collision-filter="collisionForces: false"
+    static-body="shape: sphere; sphereRadius: 0.02"
+    super-hands="colliderEvent: collisions;
+               colliderEventProperty: els;
+               colliderEndEvent: collisions;
+               colliderEndEventProperty: clearedEls;">
+    </a-mixin>
+
+    <a-mixin id="vertex"
+      hoverable grabbable stretchable draggable
+      geometry="primitive: sphere; radius: 0.01;"
+      material="shader: flat; color: white; transparent: true; opacity : 0"
+      animation__position="property: material.opacity;
+        dur: 1000;
+                
+        easing: easeOutQuad;
+        to: 1;
+        loop: false;"
+      mouvements>
+    </a-mixin>
+
+    <a-asset-item id="metro3" src="../z_k3Dlib/metro3.obj"></a-asset-item>
+    </a-assets>
+
+     <!-- <a-plane position="0 -2 0" rotation="-90 0 0" width="20" height="20" color="#CCCCCC" shadow="receive: true"
+         shadow-material="opacite: 0.5">
+     </a-plane>
+     <a-plane position="0 -2 0" rotation="-90 0 0" width="20" height="20" color="#CCCCCC">
+     </a-plane> -->
+     
+     <a-entity>
+      <a-camera position ="0 1.8 0">
+      </a-camera>
+      <a-entity sphere-collider="objects: a-box" super-hands hand-controls="hand: left"></a-entity>
+      <a-entity sphere-collider="objects: a-box" super-hands hand-controls="hand: right"></a-entity>
+    </a-entity>
+    <!-- hover & drag-drop won't have any obvious effect without some additional event handlers or components. See the examples page for more -->
+    <a-box hoverable grabbable stretchable draggable dropppable color="red" position="0 0 -1"></a-box>
+
+     <a-entity id="objet" rotation="0 -90 0" scale="2 2 2" addvertices render-order="points"></a-entity>
+     <a-entity
+     obj-model="obj:#metro3;"
+     position="0 0 0;"
+     rotation="0 -90 0"
+     scale="2 2 2"
+     material="color: blue; transparent: true; opacity: 1;"
+     render-order= "obj;"
+     animation__opacity="property: material.opacity;
+        dur: 1000;
+        
+        easing: easeOutQuad;
+        to: 0.0;
+        loop: false;"
+
+        
+     ></a-entity>
+
+ </a-scene>
+
+</body>
