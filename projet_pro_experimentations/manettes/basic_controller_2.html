@@ -34,7 +34,7 @@
           let objet = document.getElementById("objet");
           var entite = document.createElement('a-entity');
           entite.setAttribute('mixin', 'vertex');
-          entite.setAttribute('grabbable');
+          
           entite.setAttribute('position', pos);
           entite.setAttribute('class', 'sphere');
           // entite.setAttribute('render-order', 'points')
@@ -109,11 +109,11 @@
                colliderEndEvent: collisions;
                colliderEndEventProperty: clearedEls;">
     </a-mixin>
-    <a-mixin id="test" hoverable grabbable stretchable draggable dropppable></a-mixin>
+    <a-mixin id="test"></a-mixin>
     <a-asset-item id="metro3" src="../z_k3Dlib/metro3.obj"></a-asset-item>
     </a-assets>
     <a-mixin id="vertex"
-      hoverable grabbable stretchable draggable dropppable
+      
       geometry="primitive: sphere; radius: 0.01;"
       material="shader: flat; color: white; transparent: true; opacity : 0"
       animation__position="property: material.opacity;
