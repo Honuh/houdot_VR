@@ -3,6 +3,69 @@
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
   <script src="https://rawgit.com/wmurphyrd/aframe-super-hands-component/master/dist/super-hands.js"></script>
+  <script type="text/javascript" src="../lib/k3d.js"></script>
+  <script type="text/javascript">
+
+    function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+    } 
+
+    function Start() {
+      K3D.load("../z_k3Dlib/metro3.obj", loaded); // loading file ...
+    }
+
+    function loaded(data) {
+      var m = K3D.parse.fromOBJ(data); // done !
+
+      var coord = ""
+      for (var i = 0; i < m.c_verts.length; i += 3) {
+        coord = m.c_verts[i] + " " + m.c_verts[i + 1] + " " + m.c_verts[i + 2];
+            addVertex(coord);
+      }
+    }
+
+      AFRAME.registerComponent('addvertices', {
+               init: function (t) {
+                   Start();
+               }
+      });
+
+      function addVertex(pos) {
+          let objet = document.getElementById("objet");
+          var entite = document.createElement('a-entity');
+          entite.setAttribute('mixin', 'vertex');
+          entite.setAttribute('position', pos);
+          entite.setAttribute('class', 'sphere');
+          // entite.setAttribute('render-order', 'points')
+          objet.appendChild(entite);
+          //instance.play();
+      }
+
+      
+      AFRAME.registerComponent('mouvements', {
+      schema: {
+      value: {type: 'int', default: 1}
+      },
+      
+    init: function () {
+      this.valueX = getRandomArbitrary(-2.5, 2.5);
+      this.valueZ = getRandomArbitrary(-2.5, 2.5);
+      var el = this.el;
+      var sceneEl = document.querySelector('a-scene');
+      this.cam = sceneEl.querySelector('a-camera');
+      this.x = el.object3D.position.x;
+      this.z = el.object3D.position.z;
+    },
+
+    tick: function (time, timeDelta) {
+      this.el.object3D.position.x = this.cam.object3D.position.z*this.valueX + this.x;
+      this.el.object3D.position.z = this.cam.object3D.position.x*this.valueZ + this.z;
+      this.el.object3D.rotation.x+=0.01;
+    }
+});
+
+
+      </script>
 </head>
 
 <body>
@@ -66,10 +129,7 @@
         
         easing: easeOutQuad;
         to: 0.0;
-        loop: false;"
-
-        
-     ></a-entity>
+        loop: false;"></a-entity>
 
  </a-scene>
 
