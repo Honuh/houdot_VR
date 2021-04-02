@@ -85,7 +85,8 @@
                colliderEndEventProperty: clearedEls;">
     </a-mixin>
     <a-mixin id="test" hoverable grabbable stretchable draggable dropppable></a-mixin>
-    
+    <a-asset-item id="metro3" src="../z_k3Dlib/metro3.obj"></a-asset-item>
+    </a-assets>
     <a-mixin id="vertex"
       hoverable grabbable stretchable draggable dropppable
       geometry="primitive: sphere; radius: 0.01;"
@@ -98,9 +99,6 @@
         loop: false;"
       mouvements>
     </a-mixin>
-
-    <a-asset-item id="metro3" src="../z_k3Dlib/metro3.obj"></a-asset-item>
-    </a-assets>
 
      <!-- <a-plane position="0 -2 0" rotation="-90 0 0" width="20" height="20" color="#CCCCCC" shadow="receive: true"
          shadow-material="opacite: 0.5">
@@ -116,7 +114,7 @@
     </a-entity>
     <!-- hover & drag-drop won't have any obvious effect without some additional event handlers or components. See the examples page for more -->
     
-    <a-box test color="green" position="0 0 -1"></a-box>
+    <a-box test color="blue" position="0 0 -1"></a-box>
      <a-entity id="objet" rotation="0 -90 0" scale="2 2 2" addvertices render-order="points"></a-entity>
      <a-entity
      obj-model="obj:#metro3;"
