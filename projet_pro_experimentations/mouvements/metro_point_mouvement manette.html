@@ -91,19 +91,7 @@
                      colliderEndEvent: collisions;
                      colliderEndEventProperty: clearedEls;">
                     </a-mixin>
-        <a-entity>
-          <a-camera position ="0 1.8 0">
-          <a-cursor color ="white" position ="0 0 -1"></a-cursor>
-          </a-camera>
-          <a-entity id="rhand" mixin="touch"
-                  hand-controls="hand: right">
-          </a-entity>
-          <a-entity id="lhand" mixin="touch"
-                  hand-controls="hand: left">
-          </a-entity>
-        </a-entity>
-        <a-box hoverable grabbable stretchable draggable dropppable color="blue" position="0 0 -1"></a-box>
-               <a-assets>
+                <a-assets>
                 <a-mixin id="vertex"
                   hoverable grabbable stretchable draggable
                   geometry="primitive: sphere; radius: 0.01;"
@@ -129,7 +117,14 @@
            <a-plane position="0 -2 0" rotation="-90 0 0" width="20" height="20" color="#CCCCCC">
            </a-plane> -->
 
-        
+           <a-entity>
+            <a-camera position ="0 1.8 0">
+            <a-cursor color ="white" position ="0 0 -1"></a-cursor></a-camera>
+            <a-entity sphere-collider="objects: a-box" super-hands hand-controls="hand: left"></a-entity>
+            <a-entity sphere-collider="objects: a-box" super-hands hand-controls="hand: right"></a-entity>
+          </a-entity>
+          <!-- hover & drag-drop won't have any obvious effect without some additional event handlers or components. See the examples page for more -->
+          <a-box hoverable grabbable stretchable draggable dropppable color="blue" position="0 0 -1"></a-box>
 
            <a-entity id="objet" rotation="0 -90 0" scale="2 2 2" addvertices render-order="points"></a-entity>
            <a-entity
