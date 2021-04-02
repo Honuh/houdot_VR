@@ -61,8 +61,8 @@
     },
 
     tick: function (time, timeDelta) {
-      this.el.object3D.position.x = this.hand.object3D.position.x * 5;
-      this.el.object3D.position.z = this.hand.object3D.position.z * 3+this.z;
+      this.el.object3D.position.x = this.hand.object3D.position.x *valueX+this.x;
+      this.el.object3D.position.z = this.hand.object3D.position.z *valueZ+this.z;
       this.el.object3D.position.y = this.hand.object3D.position.y ;
       this.el.object3D.rotation.x+=0.01;
     }
