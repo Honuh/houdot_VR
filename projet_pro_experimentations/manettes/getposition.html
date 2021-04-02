@@ -61,9 +61,9 @@
     },
 
     tick: function (time, timeDelta) {
-      this.el.object3D.position.x = this.hand.object3D.position.x;
-      this.el.object3D.position.z = (this.hand.object3D.position.z-1);
-      this.el.object3D.position.y = this.hand.object3D.position.y;
+      this.el.object3D.position.x = this.hand.object3D.position.x *2;
+      this.el.object3D.position.z = (this.hand.object3D.position.z*2-1);
+      this.el.object3D.position.y = this.hand.object3D.position.y*2;
       this.el.object3D.rotation.x+=0.01;
     }
 });
@@ -86,7 +86,7 @@
    
 
 
-    <a-box test color="blue" position="0 0 -1" main></a-box>
+    <a-box test color="red" position="0 0 -1" main></a-box>
     
 
  </a-scene>
