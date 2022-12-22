@@ -21,7 +21,7 @@ function setup() {
 }
 
 function draw() {
-  background(0, 0, 0, 50);
+  background(0, 0, 0, 0);
   
   for (var j = 0; j < meneurs.length; j++) {
     meneurs[j].move();
