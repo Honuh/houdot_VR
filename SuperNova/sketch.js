@@ -5,27 +5,27 @@ var canDraw = false;
 
 
 function setup() {
-  createCanvas(1080, 1080);
+  createCanvas(windowWidth, windowHeight);
   background(0);
   var r = random(50,255);
   var b = random(50,255);
   var v = random(50,255);
   
-  for (var i = 0; i < 3000; i++) {
+  for (var i = 0; i < 5000; i++) {
     suiveur[i] = new Suiveur(r,v,b);
   }
   for (var j = 0; j < 15; j++) {
-    meneurs[j] = new Meneur();
+    meneurs[j] = new Meneur(random(width), random(height));
   }
   angleMode(DEGREES);
 }
 
 function draw() {
-  background(0, 0, 0, 0);
+  background(0, 0, 0, 50);
   
   for (var j = 0; j < meneurs.length; j++) {
     meneurs[j].move();
-    //meneurs[j].display();
+   //meneurs[j].display();
   }
 
   for (var i = 0; i < suiveur.length; i++) {
@@ -37,7 +37,7 @@ function draw() {
         canDraw = true;
       }
       else{
-        canDraw = false;
+        canDraw = true;
       }
     }
     
@@ -54,7 +54,7 @@ function draw() {
 
 class Suiveur {
   constructor(r,v,b) {
-    this.width = random(0.2,0.4);
+    this.width = random(0.2,0.6);
     this.r = this.width / 2 +10;
     this.stock = this.width;
 
@@ -150,11 +150,11 @@ class Suiveur {
 }
 
 class Meneur {
-  constructor() {
-    this.diameter = random(3, 10);
+  constructor(x, y) {
+    this.diameter = random(6, 20);
     
-    this.x = width/2;
-    this.y = height/2;
+    this.x = x;
+    this.y = y;
 
     this.position = createVector(this.x, this.y);
     this.xoff = random(500);
@@ -179,7 +179,7 @@ class Meneur {
     
     
     
-    this.x = noise(this.xoff) * width;
+    this.x = noise(this.xoff) * width ;
     this.y = noise(this.yoff) * height;
     this.position = createVector(this.x, this.y);
     
