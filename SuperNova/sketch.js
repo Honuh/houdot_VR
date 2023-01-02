@@ -54,7 +54,7 @@ function draw() {
 
 class Suiveur {
   constructor(r,v,b) {
-    this.width = random(0.2,0.6);
+    this.width = random(0.4,0.8);
     this.r = this.width / 2 +10;
     this.stock = this.width;
 
